@@ -51,6 +51,18 @@ input[type=text]:focus {
   margin-right: 50px;
 }
 
+@keyframes mtop {
+  from { margin-top: 0;}
+  to { margin-top: 15px; }
+}
+
+.invalid-location {
+  margin-top: 15px;
+  font-style: italic;
+  animation-name: mtop;
+  animation-duration: 0.3s;
+}
+
 .space-between {
   display: flex;
   justify-content: space-between;
