@@ -2,15 +2,13 @@ import { useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import CurrentWeather from './CurrentWeather';
 
-const Weather = ({ apiKey, city, handleSubmit }) => {
+const Weather = ({ apiKey, city, isMetric, handleSubmit, handleClick }) => {
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const date = new Date();
 
     const { data: current, isPending, error } = useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
-
-    const [isMetric, setIsMetric] = useState(true);
     const [input, setInput] = useState(city);
 
     return ( 
@@ -26,12 +24,12 @@ const Weather = ({ apiKey, city, handleSubmit }) => {
             <ul className="system">
                 <li>
                     <button className={ isMetric ? "selectedSystem" : "" }
-                            onClick={() => setIsMetric(true)}>Celsius
+                            onClick={() => handleClick(true)}>Celsius
                     </button>
                 </li>
                 <li>
                     <button className={ !isMetric ? "selectedSystem" : "" } 
-                            onClick={() => setIsMetric(false)}>Fahrenheit
+                            onClick={() => handleClick(false)}>Fahrenheit
                     </button>
                 </li>
             </ul>

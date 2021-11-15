@@ -10,6 +10,27 @@
   box-sizing: border-box;
 }
 
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
 body {
   background-color: var(--yellow);
 }
@@ -18,9 +39,19 @@ ul {
   list-style-type: none;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid black;
+}
+
 .vertical-align {
   display: flex;
   align-items: center;
+}
+
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 input[type=text] {
@@ -38,12 +69,16 @@ input[type=text]:focus {
   height: 20px;
 }
 
+.content {
+  width: 80%;
+  margin: 80px auto;
+}
+
 .home {
   display: flex;
   justify-content: space-between;
-  width: 90%;
-  margin: 80px auto;
-  padding: 40px 80px;
+  margin-bottom: 30px;
+  padding-top: 30px;
   border-top: 2px solid black;
 }
 
@@ -124,4 +159,50 @@ ul.system li:first-child button {
 
 ul.system li:last-child button {
   border-radius: 0 9px 9px 0;
+}
+
+/* GRAPH */
+.table {
+  width: 100%;
+}
+
+table {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+tbody {
+  margin-top: 40px;
+}
+
+tr {
+  border-left: 20px solid var(--yellow);
+  transition: 0.1s ease;
+}
+
+tr:hover {
+  background-color: black;
+  color: white;
+  border-left: 20px solid black;
+  transition: 0.1s ease;
+}
+
+thead tr:hover {
+  color: black;
+  background-color: transparent;
+  border-left: 20px solid var(--yellow);
+}
+
+td {
+  padding: 20px 0;
+  font-size: 14px;
+  font-weight: 500;
 }
