@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import useFetch from '../hooks/useFetch';
 import Weather from './Weather';
 import Graph from './Graph';
 import Table from './Table';
@@ -10,6 +10,8 @@ const Home = () => {
 
     const [city, setCity] = useState('Toronto');
     const [isMetric, setIsMetric] = useState(true);
+    
+    const { data: current, isPending, error } = useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,18 +27,20 @@ const Home = () => {
         <div className="content">
             <div className="home">
                 <Weather 
-                    apiKey={ API_KEY } 
                     city={ city }
                     isMetric = { isMetric }
                     handleSubmit={ handleSubmit }
                     handleClick={ handleClick } 
+                    current= { current }
+                    isPending= { isPending }
+                    error= { error }
                 />
-                <Graph apiKey={ API_KEY } isMetric={ isMetric } />
+                <Graph apiKey={ API_KEY } isMetric={ isMetric } current={ current } />
             </div>
             <Table 
                 apiKey={ API_KEY } 
                 city={ city }
-                isMetric={ isMetric }
+                isMetric={ isMetric }  
             />
         </div>
     );

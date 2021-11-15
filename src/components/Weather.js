@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import useFetch from '../hooks/useFetch';
 import CurrentWeather from './CurrentWeather';
 
-const Weather = ({ apiKey, city, isMetric, handleSubmit, handleClick }) => {
+const Weather = ({ city, isMetric, handleSubmit, handleClick, current, isPending, error }) => {
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const date = new Date();
 
-    const { data: current, isPending, error } = useFetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
     const [input, setInput] = useState(city);
-
+    
     return ( 
         <div className="weather">
             <div className="space-between vertical-align">
