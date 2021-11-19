@@ -6,12 +6,13 @@ import { defaults, Line } from 'react-chartjs-2';
 
 const Graph = ({ apiKey, isMetric, current }) => {
 
-    const weekdays = ['Sun', 'Mon', 'Tues', 'Thurs', 'Fri', 'Sat'];
+    const weekdays = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
     const date = new Date();
     let labels = [];
-    for (let i = date.getDay(); i < 7; i++) labels.push(weekdays[i % 7]);
+    for (let i = 0; i < 7; i++) {
+        labels.push(weekdays[(date.getDay() + i) % 7]);
+    }
 
-    console.log(current);
 
     const { data, isPending, error } = useFetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${current ? current.coord.lat : 43.8668}&lon=${current ? current.coord.lon : -79.2663}&exclude={part}&appid=${apiKey}`);
 
